@@ -2,6 +2,9 @@ name: Publish client - Build docker & helm - Deploy
 
 on:
   workflow_call:
+    secrets:
+      TOKEN:
+        required: true
 
 jobs:
   checkout:
