@@ -89,6 +89,8 @@ jobs:
           password: ${{ secrets.TOKEN }}
       - name: Create Dockerfile
         run: |
+          ls -a
+          cd sources
           cat <<'EOF' >> ./Dockerfile
           FROM bellsoft/liberica-openjdk-alpine-musl:17
           ARG JAR_FILE="./server/target/app-exec.jar"
@@ -98,6 +100,7 @@ jobs:
           COPY ${JAR_FILE} app.jar
           CMD [ "sh", "-c", "java -jar -Dfile.encoding=UTF-8 ${JAVA_OPTS} app.jar" ]
           EOF
+          ls -a
       - name: Build Docker image
         run: |
           ls -a
