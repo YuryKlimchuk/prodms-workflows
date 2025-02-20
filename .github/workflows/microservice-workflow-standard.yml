@@ -33,6 +33,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Deploy parent artifact
+        run: |
+          ls -a
+          cd sources
+          mvn deploy -N
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: Deploy client artifact
         run: |
           ls -a
